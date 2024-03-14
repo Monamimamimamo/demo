@@ -1,22 +1,25 @@
 package com.example.demo.injections;
 
+import com.example.demo.service.MessageService;
 import com.example.demo.service.beans.EnglishMessageService;
 import com.example.demo.service.beans.RussianMessageService;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
-import javax.annotation.PostConstruct;
+import jakarta.annotation.PostConstruct;
 
 @Component
+@Slf4j
 public class FieldInjection {
     @Autowired
-    private EnglishMessageService englishMessageService;
+    private MessageService englishMessageService;
     @Autowired
-    private RussianMessageService russianMessageService;
+    private MessageService russianMessageService;
 
     @PostConstruct
     public void init() {
-        System.out.println("Field injection: " + englishMessageService.getMessage());
-        System.out.println("Field injection: " + russianMessageService.getMessage());
+        log.info("Field injection: " + englishMessageService.getMessage());
+        log.info("Field injection: " + russianMessageService.getMessage());
     }
 }
