@@ -10,10 +10,9 @@ import org.springframework.stereotype.Component;
 @Component
 @Slf4j
 public class ConstructorInjection {
-    private MessageService englishMessageService;
-    private MessageService russianMessageService;
+    private final MessageService englishMessageService;
+    private final MessageService russianMessageService;
 
-    @Autowired
     public ConstructorInjection(EnglishMessageService englishMessageService, RussianMessageService russianMessageService) {
         this.englishMessageService = englishMessageService;
         this.russianMessageService = russianMessageService;
