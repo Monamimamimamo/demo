@@ -1,5 +1,6 @@
 package com.example.demo.controller;
 
+import com.example.demo.model.HeaderValue;
 import org.springframework.http.HttpHeaders;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestHeader;
@@ -12,10 +13,10 @@ import java.util.stream.Collectors;
 public class HeadersController {
 
     @GetMapping("/headers")
-    public List<String> getHeaders(@RequestHeader HttpHeaders headers) {
+    public List<HeaderValue> getHeaders(@RequestHeader HttpHeaders headers) {
         return headers.entrySet().stream()
                 .flatMap(entry -> entry.getValue().stream()
-                        .map(value -> entry.getKey() + ": " + value))
+                        .map(value -> new HeaderValue(entry.getKey(), value)))
                 .collect(Collectors.toList());
     }
 }
