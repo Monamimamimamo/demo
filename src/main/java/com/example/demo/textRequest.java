@@ -3,8 +3,8 @@ package com.example.demo;
 import lombok.Data;
 
 @Data
-public class UwuRequest {
+public class textRequest {
     @MyCustomValidation
-    private String s;
+    private String text;
 
 }
